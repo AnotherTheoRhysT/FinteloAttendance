@@ -13,14 +13,18 @@
 	font-family: primetime;
 }
 
+body, html {
+margin: 0;
+}
+
 
 .page-wrap{
     margin-left: 15%;
     margin-right: 15%;
     max-width: 1100px;
-    min-height: 300px;
+    min-height: 100px;
     padding: 75px 25px 100px;
-    border: none;
+    border: 0px;
 }
 .center {
 	text-align:center;
