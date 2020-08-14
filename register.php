@@ -66,21 +66,21 @@
     </style>
 </head> 
 
-<?php
-    include './config/config.php';
-    
-    $query = 'SELECT username, password FROM users';
+<?php   
+include './config/config.php';
 
-    $result = mysqli_query($conn, $query);
+$query = 'SELECT username, password FROM users';
 
-    // echo '<pre>';
-    // print_r($_SERVER);
-    // echo '</pre>';
+$result = mysqli_query($conn, $query);
+
+// echo '<pre>';
+// print_r($_SERVER);
+// echo '</pre>';
 
 
 ?>
   <body class="text-center">
-    <form action="action_page.php">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="container">
             <h1>Register</h1>
             <p>Please fill in this form to create an account.</p>
@@ -110,7 +110,6 @@
         <div class="container signin">
             <p>Already have an account? <a href="#">Sign in</a>.</p>
         </div>
-        <p>test</p>
     </form>
   </body>
 </html>
