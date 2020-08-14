@@ -54,5 +54,6 @@ li a:hover {
 }
 hr.header_hr {
   border: 5px solid #283618;
+  width: 90%;
 }
 
