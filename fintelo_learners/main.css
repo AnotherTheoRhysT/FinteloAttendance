@@ -55,5 +55,47 @@ li a:hover {
 hr.header_hr {
   border: 5px solid #283618;
   width: 90%;
+  height: 5%
 }
+.button{
+  border: none !important;
+  background: none !important;
+}
+.search{
+  height: 40px;
+}
+.search:hover {
+       opacity: 0.3;
+      filter: alpha(opacity=30);
+}
+
+//parasatable//
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #fefae0;}
+
+#customers tr:hover {background-color: #dda15e;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #bc6c25;
+  color: white;
+  width: 5%;
+}
+
+
+
+//////////
 
