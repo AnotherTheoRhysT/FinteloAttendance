@@ -1,0 +1,58 @@
+@font-face {
+	src: url(fonts/Lovelo-Black.ttf);
+	font-family: Lovelo;
+}
+
+@font-face {
+	src: url(fonts/Lovelo-LineLight.ttf);
+	font-family: Lovelo-linelight;
+}
+
+@font-face {
+	src: url(fonts/PRIMETIME.ttf);
+	font-family: primetime;
+}
+
+
+.page-wrap{
+    margin-left: 15%;
+    margin-right: 15%;
+    max-width: 1100px;
+    min-height: 300px;
+    padding: 75px 25px 100px;
+    border: none;
+}
+.center {
+	text-align:center;
+	align-content: center;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: none;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #dda15e;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: #283618;
+}
+.active_nav{
+	color: #283618;
+}
+hr.header_hr {
+  border: 5px solid #283618;
+}
+
