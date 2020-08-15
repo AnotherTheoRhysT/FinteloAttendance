@@ -2,3 +2,5 @@ pageDesign.psd
 *.pdf
 *.xlsx
 db_design.png
+localtest.php
+/.vscode
