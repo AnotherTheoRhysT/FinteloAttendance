@@ -158,7 +158,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="scripts/main.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        particlesJS.load('scripts/particles-js', 'scripts/particles.json'); 
+        particlesJS.load('particles-js', 'scripts/particles.json'); 
+        
     </script>
 </body>
 </html>
