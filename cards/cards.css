@@ -1,0 +1,64 @@
+@media (max-width: 576px) {  
+  .xs {color:red;font-weight:bold;}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width:768px) {  
+  .sm {color:red;font-weight:bold;}
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) and (max-width:992px) {  
+ .md {color:red;font-weight:bold;}
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width:1200px) { 
+ .lg {color:red;font-weight:bold;}
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    .xl {color:red;font-weight:bold;}
+}
+
+.imahe {
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-top: 20px;
+	padding-right: 5px;
+	border-radius: 50%;
+	width: 50%;
+	align-self: center;
+}
+
+.pads {
+	padding: 30px;
+}
+
+.card-titled {
+	text-align: center;
+	margin: 0;
+}
+
+.card-titled1 {
+	text-align: center;
+	padding-top: -5px;
+	font-size: 12px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+a {
+    color: #000 !important;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#808080 !important; 
+     text-decoration:none !important; 
+     cursor:pointer;  
+}
