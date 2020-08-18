@@ -1,3 +1,144 @@
+<?php
+
+function console_log($data) {
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+
+include './config/config.php';
+
+$email = $username = $psw = $pswConfirm = "";
+$emailErr = $usernameErr = $pswErr = $pswConfirmErr = $serverErr = "";
+$isAdmin = 0;
+$serverErr = [];
+// IMPROVE SECURITY AND SANITIZATION OF THIS USER INPUT, DAMN IT!!!
+
+// Processing of data when POST form is submitted
+if($_SERVER['REQUEST_METHOD'] === "POST") {
+    // Check if new user will be admin
+    $isAdmin = (!empty($_POST['is_admin'])) && ($_POST['is_admin'] === '1') ? 1 : 0 ;
+
+    // Validate email
+    if(empty(trim($_POST['email']))) {
+        //NOTE: IMPROVE EMAIL VALIDATION TO ENFORCE AN EXISTING EMAIL
+        $emailErr = "Please enter email";
+    } else {
+        // Prepare SQL statement
+        $sql = "SELECT id FROM user WHERE email = ?";
+        
+        if($stmt = $mysqli->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("s", $paramEmail);
+
+            // Set parameter
+            $paramEmail = trim($_POST['email']);
+
+            // Attempt to execute prepared statement
+            if($stmt->execute()) {
+                // Store result
+                $stmt->store_result();
+
+                if($stmt->num_rows() === 1) {
+                    $emailErr = "Email already registered. Use another email.";
+                } else {
+                    $email = trim($_POST['email']);
+                }
+            } else { 
+                array_push($serverErr, $stmt->error);
+            }
+
+            // Close statement;
+            $stmt->close();
+        }
+    }
+
+    // Validate username
+    if(empty(trim($_POST['username']))) {
+        $usernameErr = "Please enter a username.";
+    } else {
+        // Prepare SQL statement
+        $sql = "SELECT id FROM user WHERE username = ?";
+
+        if($stmt = $mysqli->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("s", $paramUsername);
+
+            // Set parameter
+            $paramUsername = trim($_POST['username']);
+
+            // Attempt to exectute the prepared statement
+            if($stmt->execute()) {
+                // Store result
+                $stmt->store_result();
+
+                if($stmt->num_rows == 1) {
+                    $usernameErr = "This username is already taken. Choose another username.";
+                } else {
+                    $username = trim($_POST['username']);
+                }
+            } else {
+                array_push($serverErr, $stmt->error);
+            }
+
+            // Close statement
+            $stmt->close();
+        }
+    }
+
+    // psw-confirm = $pswConfirm
+    // Validate password
+    if(empty(trim($_POST['psw']))) {
+        $pswErr = "Please enter a password";
+    } elseif(strlen(trim($_POST['psw'])) < 8 ) {
+        $pswErr = "Password must be at least 8 characters";
+    } else {
+        $psw = trim($_POST['psw']);
+    }
+
+    // Validate confirm password
+    if(empty(trim($_POST['psw-confirm']))) {
+        $pswConfirmErr = "Please reenter password";
+    } else {
+        $pswConfirm = trim($_POST['psw-confirm']);
+        if(empty($pswErr) && ($psw !== $pswConfirm)) {
+            $pswConfirmErr = "Password did not match.";
+        }
+    }
+
+    if(empty($emailErr) && empty($usernameErr) && empty($pswErr) && empty($pswConfirmErr)) {
+        // Prepare insert statement
+        $sql = "INSERT INTO user (`email`, `username`, `password`, `is_admin`) VALUES (?, ?, ?, ?)";
+
+        if($stmt = $mysqli->prepare($sql)) {
+            // Bind variables to the prepared statement as params
+            $stmt->bind_param("sssi", $paramEmail, $paramUsername, $paramPsw, $paramAdmin);
+            
+            // Set parameters
+            $paramEmail = $email;
+            $paramUsername = $username;
+            $paramPsw = password_hash($psw, PASSWORD_ARGON2ID, ['cost' => 10]);
+            $paramAdmin = $isAdmin;
+
+            // Attempt to execute prepared statement
+            if($stmt->execute()) {
+                // Redirect / Reset to register page
+                header($_SERVER['PHP_SELF']);
+            } else {
+                array_push($serverErr, $stmt->error);
+            }
+
+            // Close statement
+            $stmt->close();
+        }
+        
+    }
+    // Close connection
+    $mysqli->close();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,147 +215,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head> 
 
-<?php
-
-function console_log($data) {
-    echo '<script>';
-    echo 'console.log('. json_encode( $data ) .')';
-    echo '</script>';
-}
-
-include './config/config.php';
-
-$email = $username = $psw = $pswConfirm = "";
-$emailErr = $usernameErr = $pswErr = $pswConfirmErr = $serverErr = "";
-$isAdmin = 0;
-
-// IMPROVE SECURITY AND SANITIZATION OF THIS USER INPUT, DAMN IT!!!
-
-// Processing of data when POST form is submitted
-if($_SERVER['REQUEST_METHOD'] === "POST") {
-    // Check if new user will be admin
-    $isAdmin = (!empty($_POST['is_admin'])) && ($_POST['is_admin'] === '1') ? 1 : 0 ;
-
-    // Validate email
-    if(empty(trim($_POST['email']))) {
-        //NOTE: IMPROVE EMAIL VALIDATION TO ENFORCE AN EXISTING EMAIL
-        $emailErr = "Please enter email";
-    } else {
-        // Prepare SQL statement
-        $sql = "SELECT id FROM user WHERE email = ?";
-        
-        if($stmt = $mysqli->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $paramEmail);
-
-            // Set parameter
-            $paramEmail = trim($_POST['email']);
-
-            // Attempt to execute prepared statement
-            if($stmt->execute()) {
-                // Store result
-                $stmt->store_result();
-
-                if($stmt->num_rows() === 1) {
-                    $emailErr = "Email already registered. Use another email.";
-                } else {
-                    $email = trim($_POST['email']);
-                }
-            } else { 
-                $serverErr = "Server Error. Please Try Again.";
-            }
-
-            // Close statement;
-            $stmt->close();
-        }
-    }
-
-    // Validate username
-    if(empty(trim($_POST['username']))) {
-        $usernameErr = "Please enter a username.";
-    } else {
-        // Prepare SQL statement
-        $sql = "SELECT id FROM user WHERE username = ?";
-
-        if($stmt = $mysqli->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $paramUsername);
-
-            // Set parameter
-            $paramUsername = trim($_POST['username']);
-
-            // Attempt to exectute the prepared statement
-            if($stmt->execute()) {
-                // Store result
-                $stmt->store_result();
-
-                if($stmt->num_rows == 1) {
-                    $usernameErr = "This username is already taken. Choose another username.";
-                } else {
-                    $username = trim($_POST['username']);
-                }
-            } else {
-                $serverErr = "Server Error. Please Try Again.";
-            }
-
-            // Close statement
-            $stmt->close();
-        }
-    }
-
-    // psw-confirm = $pswConfirm
-    // Validate password
-    if(empty(trim($_POST['psw']))) {
-        $pswErr = "Please enter a password";
-    } elseif(strlen(trim($_POST['psw'])) < 8 ) {
-        $pswErr = "Password must be at least 8 characters";
-    } else {
-        $psw = trim($_POST['psw']);
-    }
-
-    // Validate confirm password
-    if(empty(trim($_POST['psw-confirm']))) {
-        $pswConfirmErr = "Please reenter password";
-    } else {
-        $pswConfirm = trim($_POST['psw-confirm']);
-        if(empty($pswErr) && ($psw !== $pswConfirm)) {
-            $pswConfirmErr = "Password did not match.";
-        }
-    }
-
-    if(empty($emailErr) && empty($usernameErr) && empty($pswErr) && empty($pswConfirmErr)) {
-        // Prepare insert statement
-        $sql = "INSERT INTO user (`email`, `username`, `password`, `is_admin`) VALUES (?, ?, ?, ?)";
-
-        if($stmt = $mysqli->prepare($sql)) {
-            // Bind variables to the prepared statement as params
-            $stmt->bind_param("sssi", $paramEmailm, $paramUsername, $paramPsw, $paramAdmin);
-            var_dump($stmt->execute());
-            // Set parameters
-            $paramEmail = $email;
-            $paramUsername = $username;
-            $paramPsw = password_hash($psw, PASSWORD_ARGON2ID, ['cost' => 10]);
-            $paramAdmin = $isAdmin;
-
-            // Attempt to execute prepared statement
-            if($stmt->execute()) {
-                // Redirect / Reset to register page
-                header($_SERVER['PHP_SELF']);
-            } else {
-                $serverErr = "Server error. Please try again.";
-            }
-
-            // Close statement
-            $stmt->close();
-        }
-        console_log($isAdmin);
-    }
-    // Close connection
-    $mysqli->close();
-}
-
-?>
-  <body class="text-center">
+<body class="text-center">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="container">
             <h1>Register</h1>
@@ -222,8 +223,13 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
             <hr>
 
             <div class="form-group">
+                <?php if(!empty($serverErr)):?>
+                    <div class="alert alert-danger">
+                        <pre><?php print_r($serverErr); ?></pre>
+                    </div>
+                <?php endif; ?>
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required 
+                <input type="email" placeholder="Enter Email" name="email" id="email" required 
                     <?php 
                     echo (!empty($email)) ? "value='{$email}'": "" ;
                     echo (empty($emailErr)) ? "class='is-valid'" : "class='is-invalid'";
@@ -286,5 +292,5 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
             <p>Already have an account? <a href="#">Sign in</a>.</p>
         </div>
     </form>
-  </body>
+</body>
 </html>

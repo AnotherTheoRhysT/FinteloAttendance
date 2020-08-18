@@ -9,18 +9,11 @@ define('DB_NAME', 'fintelo_attendance');
 
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-// Check Connection
 if($mysqli === false) {
     // IMPROVE ERROR HANDLING
     die("ERROR: Could not connect. " . $mysqli->connect_error);
 }
 
-// // Create connection to MySQL DB
-// $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+session_start();
 
-// if(mysqli_connect_errno()){
-//     echo 'Failed to connect to MySQL' . mysqli_connect_errno();
-// }
-
-// Connect to DB
 ?>
