@@ -83,7 +83,8 @@
                 <td > <input class="form-check-input" type="radio" name="sex" id="sex" value="M" checked>
                     <label class="form-check-label" for="gridRadios1">M </label> 
                     <input class="form-check-input" type="radio" name="sex" id="sex" value="F">
-                    <label class="form-check-label" for="gridRadios2"> F </label> </td>
+                    <label class="form-check-label" for="gridRadios2"> F </label> 
+                </td>
                 <!-- <td><textarea name='sex' class='form-control'></textarea></td> -->
             </tr>
             <tr>
