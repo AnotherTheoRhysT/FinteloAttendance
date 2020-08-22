@@ -19,8 +19,8 @@ section {
 }
 
 .title {
-  font-family: Roboto;
-  font-size: 36px;
+  font-family: Pacifico;
+  font-size: 48px;
   margin-top: 30px;
   text-align: center;
 }
@@ -28,16 +28,17 @@ section {
 .wrap {
   font-family: Roboto;
 
-  max-width: 350px;
+  max-width: 600px;
+  max-height: 1000px;
   border-radius: 20px;
   margin: auto;
   background: rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  padding: 10px;
+  padding: 50px;
   color: #283618;
-  text-shadow: 1px 1px #bc6c25;
+  /* text-shadow: 1px 1px #bc6c25; */
   font-weight: bold;
-  margin-top: 36px;
+  margin-top: 30px;
 }
 ::placeholder {
   color: #283618;
@@ -64,10 +65,10 @@ input [type="password"] {
 }
 
 input[type="submit"] {
-  width: 100%;
+  width: 80%;
   box-sizing: border-box;
-  padding: 10px 0;
-  margin-top: 10px;
+  
+  margin-top: 600px;
   outline: none;
   border: none;
   background: #606c38;
