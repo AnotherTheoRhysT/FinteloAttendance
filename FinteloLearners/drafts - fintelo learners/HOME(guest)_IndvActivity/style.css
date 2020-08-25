@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+@font-face {
+  src: url(fonts/Lovelo-Black.ttf);
+  font-family: Lovelo;
+}
+
+@font-face {
+  src: url(fonts/Lovelo-LineLight.ttf);
+  font-family: Lovelo-linelight;
+}
+
+@font-face {
+  src: url(fonts/PRIMETIME.ttf);
+  font-family: primetime;
+}
+
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+  }
+@media (max-width: 768px) {
+  
+}
+@media (max-width: 576px) {
+  
+}
+
+.page-wrap {
+    margin-left: 15%;
+    margin-right: 15%;
+    max-width: 1100px;
+    min-height: 100px;
+    padding: 50px 25px 1px;
+    border: 0px;
+}
+
+
+
+.header_title1{
+  color: #283618; 
+  font-size: 400%;
+  animation-name: header_title1;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes header_title1{
+        0% {opacity: 0%;
+          margin-left: 175px;
+        }
+        100% {opacity: 100%
+          margin-left: 0px;
+        }
+    }
+
+.header_title2{
+  color: #606c38;
+  animation-name: header_title2;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes header_title2{
+        0% {opacity: 0%;
+          margin-right: 400px;
+        }
+        100% {opacity: 100%
+          margin-right: 0px;
+        }
+    }
+
+.animation{
+  animation-name: animation;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes animation{
+        0% {opacity: 0%;
+          margin-left: 175px;
+        }
+        100% {opacity: 100%
+          margin-left: 0px;
+        }
+    }
+
+
+
+
+
+
+
+h1 {
+   font-size: 270%;
+}
+
+.center {
+  text-align:center;
+  align-content: center;
+}
+.navbar-light .navbar-brand {
+    color: #283618;
+}
+
+<-- parasatable -->
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: none;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #dda15e;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: #283618;
+}
+
+hr.header_hr {
+  border: 5px solid #283618;
+  width: 90%;
+  height: 5%
+}
+
+.search{
+  height: 40px;
+}
+.search:hover {
+       opacity: 0.3;
+      filter: alpha(opacity=30);
+}
+
+<-- buttons -->
+.bg-light {
+    background-color: none!important;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #283618;
+    border-color: #283618;
+}
+
+.btn-outline-success {
+    color: #283618;
+    background-color: transparent;
+    background-image: none;
+    border-color: #283618;
+}
+
+.button{
+  border: none !important;
+  background: none !important;
+}
+
+.btn-primary2{
+    color: #fff;
+    background-color: #c79154;
+    border-color: #c79154;
+}
+
+.btn-primary2:hover{
+  background: none;
+  color: #c79154;
+}
+
+.btn-primary3{
+    color: #DDA15E;
+    background-color: #fefae0;
+    border-color: #fefae0;
+}
+
+.btn-primary3:hover{
+  background: #DDA15E;
+  color: #FEFAE0;
+}
+
+.bg_1{
+  background-color:#fefae0;
+}
+.bg_2{
+  background-color:#DDA15E;
+}
+
+
+/*---Firefox Bug Fix --*/
+.carousel-item {
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+/*--- Fixed Background Image --*/
+figure {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  margin: 0!important;
+}
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}
+
+.nav-link: hover{
+  color: #BC6C25;
+}
+
+
+<-- pagination -->
+.page-link2 {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #BC6C25;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+
+
+
+
+
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+
+
+
+
+
