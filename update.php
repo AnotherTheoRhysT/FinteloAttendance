@@ -28,7 +28,7 @@
             // read current record's data
             try {
                 // prepare select query
-                $query = "SELECT id, first_name, middle_name, last_name, sex, group_number FROM students WHERE id = ? LIMIT 0,1";
+                $query = "SELECT id, first_name, middle_name, last_name, sex, group_number FROM student WHERE id = ? LIMIT 0,1";
                 $stmt = $con->prepare( $query );
                 
                 // this is the first question mark
