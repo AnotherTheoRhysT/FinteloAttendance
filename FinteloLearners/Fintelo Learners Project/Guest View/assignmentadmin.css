@@ -1,0 +1,41 @@
+.is-list-selected {
+  background: #cb2d3e;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #cb2d3e, #ef473a);
+  background: -webkit-linear-gradient(left, #cb2d3e, #ef473a);
+  background: linear-gradient(to right, #cb2d3e, #ef473a);
+  color: white;
+}
+
+#customers {
+  font-family: "Lovelo", sans-serif;
+  border-collapse: collapse;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#customers td, #customers th {
+  padding: 8px;
+  vertical-align: text-bottom;
+}
+
+#customers tr:nth-child(even){background-color: #ffffff;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: gray;
+  height: 30px;
+}
+
+.btn {
+  background-color: #bc6c25; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}

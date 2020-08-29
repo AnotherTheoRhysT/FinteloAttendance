@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Admin View",
+    "\\Guest View"
   ],
-  "SelectedNode": "\\showattendance.html",
+  "SelectedNode": "\\Guest View\\style.css",
   "PreviewInSolutionExplorer": false
 }

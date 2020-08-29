@@ -42,7 +42,7 @@
 
 .header_title1 {
     color: #283618;
-    font-size: 450%;
+    font-size: 300%;
     animation-name: header_title1;
     animation-duration: 1s;
     animation-fill-mode: both;
@@ -116,13 +116,6 @@ hr.header_hr {
     width: 90%;
     height: 5%
 }
-.search{
-    height: 40px;
-  }
-.search:hover {
-         opacity: 0.3;
-        filter: alpha(opacity=30);
-  }
 
 .header_hr2 {
     border: 5px solid #FEFAE0;
@@ -130,11 +123,11 @@ hr.header_hr {
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: #BC6C25;
+    color: #283618;
 }
 
 .active {
-    color: #283618 !important;
+    color: #BC6C25 !important;
 }
 
 
@@ -193,7 +186,7 @@ hr.header_hr {
 /*---end of Header---*/
 
 
-/* <-- parasatable --> */
+<-- parasatable -->
 ul {
     list-style-type: none;
     margin: 0;
@@ -264,7 +257,7 @@ figure {
 }
 
 
-/* <-- pagination --> */
+<-- pagination -->
 .page-link2 {
     position: relative;
     display: block;
