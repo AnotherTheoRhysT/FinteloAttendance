@@ -42,7 +42,7 @@
 
 .header_title1 {
     color: #283618;
-    font-size: 300%;
+    font-size: 400%;
     animation-name: header_title1;
     animation-duration: 1s;
     animation-fill-mode: both;
@@ -59,6 +59,13 @@
     }
 }
 
+.search{
+  height: 40px;
+}
+.search:hover {
+       opacity: 0.3;
+      filter: alpha(opacity=30);
+}
 .header_title2 {
     color: #606c38;
     animation-name: header_title2;
@@ -113,14 +120,14 @@ h1 {
 
 hr.header_hr {
     border: 5px solid #283618;
+    background-color: #283618;
     width: 90%;
-    height: 5%
-}
+  }
 
-.header_hr2 {
+/* .header_hr2 {
     border: 5px solid #FEFAE0;
     width: 100%;
-}
+} */
 
 .navbar-light .navbar-nav .nav-link {
     color: #283618;
